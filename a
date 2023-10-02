@@ -1,0 +1,21 @@
+<?php
+$servername = "localhost"; // Имя сервера базы данных
+$username = "имя_пользователя"; // Ваше имя пользователя для доступа к БД
+$password = "ваш_пароль"; // Ваш пароль для доступа к БД
+$dbname = "имя_базы_данных"; // Имя базы данных, к которой вы хотите подключиться
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Чтение SQL-скрипта из файла
+    $sqlScript = file_get_contents("путь_к_вашему_файлу.sql");
+
+    // Выполнение SQL-скрипта
+    $conn->exec($sqlScript);
+
+    echo "SQL-скрипт успешно выполнен";
+} catch (PDOException $e) {
+    echo "Ошибка выполнения SQL-скрипта: " . $e->getMessage();
+}
+?>
