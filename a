@@ -1,21 +1,34 @@
 <?php
-$servername = "localhost"; // Имя сервера базы данных
-$username = "имя_пользователя"; // Ваше имя пользователя для доступа к БД
-$password = "ваш_пароль"; // Ваш пароль для доступа к БД
-$dbname = "имя_базы_данных"; // Имя базы данных, к которой вы хотите подключиться
+// Параметры подключения к базе данных
+$servername = "localhost"; // адрес сервера базы данных (обычно localhost)
+$username = "ваше_имя_пользователя"; // имя пользователя базы данных
+$password = "ваш_пароль"; // пароль пользователя базы данных
+$dbname = "имя_вашей_базы_данных"; // имя базы данных
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Создаем соединение
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Чтение SQL-скрипта из файла
-    $sqlScript = file_get_contents("путь_к_вашему_файлу.sql");
-
-    // Выполнение SQL-скрипта
-    $conn->exec($sqlScript);
-
-    echo "SQL-скрипт успешно выполнен";
-} catch (PDOException $e) {
-    echo "Ошибка выполнения SQL-скрипта: " . $e->getMessage();
+// Проверяем соединение на наличие ошибок
+if ($conn->connect_error) {
+    die("Ошибка подключения: " . $conn->connect_error);
 }
+
+// SQL-запрос для выборки данных
+$sql = "SELECT * FROM ваша_таблица";
+
+// Выполняем запрос
+$result = $conn->query($sql);
+
+// Проверяем, есть ли данные
+if ($result->num_rows > 0) {
+    // Выводим данные
+    while ($row = $result->fetch_assoc()) {
+        echo "Имя: " . $row["имя_столбца"] . " Возраст: " . $row["возраст"] . "<br>";
+    }
+} else {
+    echo "Нет данных";
+}
+
+// Закрываем соединение
+$conn->close();
 ?>
