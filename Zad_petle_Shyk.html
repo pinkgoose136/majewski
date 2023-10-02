@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Zadanie 1</title>
+</head>
+<body>
+	<script>
+		var x=Number(prompt("Podaj liczbę: "));
+		var a = 1
+		var p = 0
+		while (a<x){
+			document.write(String(a)+", ");
+			if (a %2==0){p++; console.log(a)}
+			a++
+		}
+		document.write("<br>Ilość liczb parzystych: "+String(p));
+	</script>
+
+	<script>
+		var tabelka = "<table border='1px'><tr>"
+		var l = 0
+		var lista = [] 
+		do{
+			if (l > 49 && l < 101){
+				lista.push(l)
+				tabelka += "<td>"+String(l)+"</td>"
+			}
+			l++
+		}while (lista.length < 19)
+		document.write("<br><br>"+tabelka+"</tr></table>");
+		
+	</script>
+</body>
+</html>
