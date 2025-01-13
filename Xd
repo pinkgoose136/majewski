@@ -1,0 +1,54 @@
+/* Cała strona */
+body {
+    background-color: #F6E5DC;
+    font-family: Verdana, sans-serif;
+}
+
+/* Baner */
+.banner {
+    background-color: #2F180C;
+    text-align: center;
+    color: khaki;
+    height: 60px;
+    line-height: 60px;
+}
+
+/* Panel lewy */
+.panel-lewy {
+    width: 60%;
+}
+
+/* Panel prawy */
+.panel-prawy {
+    font-size: 150%;
+    padding: 70px;
+}
+
+/* Panel dolny */
+.panel-dolny {
+    background-color: #D0B6A8;
+    text-align: center;
+    padding: 30px;
+}
+
+/* Stopka */
+.stopka {
+    background-color: #2F180C;
+    color: khaki;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+/* Obraz */
+img {
+    height: 350px;
+}
+
+/* Przyciski */
+button {
+    margin: 10px;
+    padding: 5px;
+    background-color: #2F180C;
+    color: khaki;
+}
